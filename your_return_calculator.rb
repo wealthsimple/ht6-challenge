@@ -9,7 +9,17 @@ class YourReturnCalculator < ReturnCalculator
     # snapshot.date
     # snapshot.cash_flow
     # snapshot.market_value
-
-    BigDecimal.new(1)
+	a=BigDecimal.new(1)
+	snapshots.reduce(snapshots.first)do
+	|last,day|
+		puts day
+		puts last
+		if day!=last
+			a=(day.market_value-day.cash_flow)/last.market_value*a
+		end
+	day
+	end
+	puts a
+    BigDecimal.new(a-1)
   end
 end
